@@ -2,7 +2,7 @@
 # @Author  : young
 from flask_migrate import Migrate
 
-from app import create_app, db
+from app import create_app, db, models
 
 app = create_app("develop")
 
