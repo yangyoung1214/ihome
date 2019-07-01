@@ -22,7 +22,7 @@ function generateImageCode() {
     // 1、生成图片验证码编号
     imageCodeId = generateUUID();
     // 2、设置图片url
-    var url = "/api/v1.0/image_code/" + imageCodeId
+    var url = "/api/v1.0/image_codes/" + imageCodeId
     $(".image-code img").attr("src", url);
 }
 
@@ -48,7 +48,7 @@ function sendSMSCode() {
         image_code_id: imageCodeId
     }
 
-    $.get("/api/v1.0/sms_code/" + mobile, req_data, function (resp) {
+    $.get("/api/v1.0/sms_codes/" + mobile, req_data, function (resp) {
         if (resp.errno == "0") {
             var num = 60;
             var timer = setInterval(function () {
@@ -123,7 +123,7 @@ $(document).ready(function () {
         var req_json = JSON.stringify(req_data);
 
         $.ajax({
-            url: "/api/v1.0/user",
+            url: "/api/v1.0/users",
             type: "post",
             data: req_json,
             contentType: "application/json",

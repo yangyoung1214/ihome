@@ -59,9 +59,9 @@ function goToSearchPage(th) {
 
 $(document).ready(function () {
     // 检查用户登录状态
-    $.get("/api/v1.0/session", function (resp) {
+    $.get("/api/v1.0/sessions", function (resp) {
         if (resp.errno == "0") {
-            $(".top-bar>.user-info>.user-name").html(resp.data.name);
+            $(".top-bar>.user-info>.user-name").html(resp.datas.name);
             $(".top-bar>.user-info").show()
         } else {
             $(".top-bar>.register-login").show()

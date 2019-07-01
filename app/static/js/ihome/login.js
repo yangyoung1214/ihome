@@ -27,13 +27,13 @@ $(document).ready(function () {
 
         var req_dict = {
             mobile: mobile,
-            password:passwd
+            password: passwd
         };
 
         var req_data = JSON.stringify(req_dict)
 
         $.ajax({
-            url: "/api/v1.0/session",
+            url: "/api/v1.0/sessions",
             type: "post",
             data: req_data,
             contentType: "application/json",
@@ -43,7 +43,8 @@ $(document).ready(function () {
             },
             success: function (resp) {
                 if (resp.errno == "0") {
-                    location.href="/index.html"
+                    alert(resp.errmsg)
+                    location.href = "/index.html"
                 } else {
                     alert(resp.errmsg)
                 }
