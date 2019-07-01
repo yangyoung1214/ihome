@@ -10,6 +10,7 @@ from flask_session import Session
 from flask_wtf import CSRFProtect
 
 from config import config
+from .utils.commons import ReConverter
 
 db = SQLAlchemy()
 
@@ -43,7 +44,12 @@ def create_app(config_name):
 
     CSRFProtect(app)
 
+    app.url_map.converters["re"] = ReConverter
+
     from .api_1_0 import api as api_1_0
     app.register_blueprint(api_1_0, url_prefix="/api/v1.0")
+
+    from .web_html import html
+    app.register_blueprint(html)
 
     return app
